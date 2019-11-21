@@ -9,16 +9,62 @@
 import SwiftUI
 
 struct Welcome_view: View {
-    let backGroundColor = LinearGradient(gradient: Gradient(
-        colors: [Color(red: 0.0, green: 0.85, blue: 1.0, opacity: 1.0),
-                 Color.blue]),
-        startPoint: .top, endPoint: .bottom)
-    
     var body: some View {
         ZStack {
-            backGroundColor.edgesIgnoringSafeArea(.all)
-            Text("This is welcome view")
+            self.backGroundColor().edgesIgnoringSafeArea(.all)
+            
+            
+            VStack (spacing: 80){
+                Text("welcome to pomboo!")
+                    .font(.title)
+                    .foregroundColor(Color.white)
+                
+                VStack (spacing: 10) {
+                    Button(action: {
+                            
+                    }) {
+                        Text("Login")
+                            .font(.headline)
+                        .frame(width: 200.0, height: 50)
+                        .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                        .cornerRadius(20.0)
+                        .shadow(radius: 20)
+                    }
+                    
+                    
+                    Text("or")
+                        .foregroundColor(Color.white)
+                        
+                    
+                    Button(action: {
+                        
+                    }) {
+                        Text("Sign Up")
+                            .font(.headline)
+                            .foregroundColor(Color.white)
+                        .frame(width: 200.0, height: 50)
+                        .cornerRadius(20.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                    }
+                    
+                        
+                }
+            }
         }
+    }
+    
+    private func backGroundColor() -> LinearGradient {
+        let start = UnitPoint.init(x: 0.0, y: 0.0)
+        let end = UnitPoint.init(x: 1.0, y: 1.0)
+
+        // convert UIColor to Color
+        let colors = Gradient(colors: [Color.blue, Color(UIColor.blue)])
+        let gradientColor = LinearGradient(gradient: colors, startPoint: start, endPoint: end)
+
+        return gradientColor
     }
 }
 
