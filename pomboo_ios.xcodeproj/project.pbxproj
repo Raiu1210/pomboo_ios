@@ -13,6 +13,7 @@
 		3B2DDD4B237A9C300079BCA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2DDD4A237A9C300079BCA7 /* Assets.xcassets */; };
 		3B2DDD4E237A9C300079BCA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2DDD4D237A9C300079BCA7 /* Preview Assets.xcassets */; };
 		3B2DDD51237A9C300079BCA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2DDD4F237A9C300079BCA7 /* LaunchScreen.storyboard */; };
+		3B57DE85238635130055CFB4 /* Welcome_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B57DE84238635120055CFB4 /* Welcome_view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3B2DDD4D237A9C300079BCA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B2DDD50237A9C300079BCA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B2DDD52237A9C300079BCA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B57DE84238635120055CFB4 /* Welcome_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome_view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				3B2DDD44237A9C2C0079BCA7 /* AppDelegate.swift */,
 				3B2DDD46237A9C2C0079BCA7 /* SceneDelegate.swift */,
+				3B57DE84238635120055CFB4 /* Welcome_view.swift */,
 				3B2DDD48237A9C2C0079BCA7 /* ContentView.swift */,
 				3B2DDD4A237A9C300079BCA7 /* Assets.xcassets */,
 				3B2DDD4F237A9C300079BCA7 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				3B2DDD45237A9C2C0079BCA7 /* AppDelegate.swift in Sources */,
 				3B2DDD47237A9C2C0079BCA7 /* SceneDelegate.swift in Sources */,
 				3B2DDD49237A9C2C0079BCA7 /* ContentView.swift in Sources */,
+				3B57DE85238635130055CFB4 /* Welcome_view.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

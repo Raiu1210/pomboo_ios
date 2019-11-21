@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         // when it is first launch
         if defaults.bool(forKey: "firstLaunch") {
-          
             // Create application support directory
             let directory_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
             let fileManager = FileManager.default
@@ -34,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // off the flag to know if it is first time to launch
             defaults.set(false, forKey: "firstLaunch")
         }
+        
+        
         return true
     }
 
