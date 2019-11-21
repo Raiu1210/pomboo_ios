@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         var dic = ["firstLaunch": true]
         defaults.register(defaults: dic)
-          
-        // Some Process will be here
+            
+        // when it is first launch
         if defaults.bool(forKey: "firstLaunch") {
           
-            // Some Process will be here
+            // Create application support directory
             let directory_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
             let fileManager = FileManager.default
             do {
