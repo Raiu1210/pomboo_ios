@@ -10,50 +10,45 @@ import SwiftUI
 
 struct Welcome_view: View {
     var body: some View {
-        ZStack {
-            self.backGroundColor().edgesIgnoringSafeArea(.all)
-            
-            
-            VStack (spacing: 80){
-                Text("welcome to pomboo!")
-                    .font(.title)
-                    .foregroundColor(Color.white)
-                
-                VStack (spacing: 10) {
-                    Button(action: {
-                            
-                    }) {
-                        Text("Login")
-                            .font(.headline)
-                        .frame(width: 200.0, height: 50)
-                        .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(20.0)
-                        .shadow(radius: 20)
-                    }
-                    
-                    
-                    Text("or")
+        NavigationView {
+            ZStack {
+                self.backGroundColor().edgesIgnoringSafeArea(.all)
+                VStack (spacing: 80){
+                    Text("welcome to pomboo!")
+                        .font(.title)
                         .foregroundColor(Color.white)
-                        
-                    
-                    Button(action: {
-                        
-                    }) {
-                        Text("Sign Up")
-                            .font(.headline)
+
+                    VStack (spacing: 10) {
+                        NavigationLink(destination: Login_view()) {
+                            Text("Login")
+                                .font(.headline)
+                            .frame(width: 200.0, height: 50)
+                            .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                            .cornerRadius(20.0)
+                            .shadow(radius: 20)
+                        }
+
+                        Text("or")
                             .foregroundColor(Color.white)
-                        .frame(width: 200.0, height: 50)
-                        .cornerRadius(20.0)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.white, lineWidth: 2)
-                        )
-                    }
-                    
                         
+                        NavigationLink(destination: Login_view()) {
+                            Text("Sign Up")
+                                .font(.headline)
+                                .foregroundColor(Color.white)
+                            .frame(width: 200.0, height: 50)
+                            .cornerRadius(20.0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.white, lineWidth: 2)
+                            )
+                        }
+                    }
                 }
             }
         }
+        
+            
+            
     }
     
     private func backGroundColor() -> LinearGradient {
