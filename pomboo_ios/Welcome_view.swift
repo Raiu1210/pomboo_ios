@@ -31,7 +31,7 @@ struct Welcome_view: View {
                         Text("or")
                             .foregroundColor(Color.white)
                         
-                        NavigationLink(destination: Login_view()) {
+                        NavigationLink(destination: SignUp_view()) {
                             Text("Sign Up")
                                 .font(.headline)
                                 .foregroundColor(Color.white)
@@ -42,13 +42,10 @@ struct Welcome_view: View {
                                     .stroke(Color.white, lineWidth: 2)
                             )
                         }
-                    }
+                    }.padding(70)
                 }
             }
         }
-        
-            
-            
     }
     
     private func backGroundColor() -> LinearGradient {
