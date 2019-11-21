@@ -22,7 +22,8 @@ struct Welcome_view: View {
                         NavigationLink(destination: Login_view()) {
                             Text("Login")
                                 .font(.headline)
-                            .frame(width: 200.0, height: 50)
+                                .foregroundColor(Color.blue)
+                                .frame(width: 200.0, height: 50)
                             .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
                             .cornerRadius(20.0)
                             .shadow(radius: 20)
