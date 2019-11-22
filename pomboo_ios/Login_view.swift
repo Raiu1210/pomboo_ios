@@ -16,18 +16,32 @@ struct Login_view: View {
         NavigationView {
             ZStack {
                 self.return_backGroundColor().edgesIgnoringSafeArea(.all)
-                VStack (alignment: .center, spacing: 30) {
-                    TextField("email", text: $email)
-                        .frame(width: 300.0, height: 50.0)
-                        .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.25))
-                        .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
+                VStack (spacing: 50) {
+                    HStack {
+                        Text("Login")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: 200.0, height: 30)
+                        Spacer()
+                    }
                     
-                    TextField("password", text: $password)
-                    .frame(width: 300.0, height: 50.0)
-                    .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.25))
-                    .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
+                    VStack(spacing: 20) {
+                        TextField("email", text: $email)
+                            .frame(width: 300.0, height: 50.0)
+                            .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.25))
+                            .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
+                        
+                        
+                        TextField("password", text: $password)
+                            .frame(width: 300.0, height: 50.0)
+                            .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.25))
+                            .font(.headline)
+                            
+                    }
                     Spacer()
                 }
+                .frame(height: 500.0)
             }
         }
     }
