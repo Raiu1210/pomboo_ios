@@ -12,7 +12,7 @@ struct Welcome_view: View {
     var body: some View {
         NavigationView {
             ZStack {
-                self.backGroundColor().edgesIgnoringSafeArea(.all)
+                self.return_backGroundColor().edgesIgnoringSafeArea(.all)
                 VStack (spacing: 80){
                     Text("welcome to pomboo!")
                         .font(.title)
@@ -49,15 +49,10 @@ struct Welcome_view: View {
         }
     }
     
-    private func backGroundColor() -> LinearGradient {
-        let start = UnitPoint.init(x: 0.0, y: 0.0)
-        let end = UnitPoint.init(x: 1.0, y: 1.0)
+    private func return_backGroundColor() -> LinearGradient {
+        let MUM = My_UI_modules()
 
-        // convert UIColor to Color
-        let colors = Gradient(colors: [Color.blue, Color(UIColor.blue)])
-        let gradientColor = LinearGradient(gradient: colors, startPoint: start, endPoint: end)
-
-        return gradientColor
+        return MUM.backGroundColor()
     }
 }
 
