@@ -9,8 +9,33 @@
 import SwiftUI
 
 struct Login_view: View {
+    @State var email: String = ""
+    @State var password: String = ""
+    
     var body: some View {
-        Text("This is Login view")
+        NavigationView {
+            ZStack {
+                self.return_backGroundColor().edgesIgnoringSafeArea(.all)
+                VStack (alignment: .center, spacing: 30) {
+                    TextField("email", text: $email)
+                        .frame(width: 300.0, height: 50.0)
+                        .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.25))
+                        .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
+                    
+                    TextField("password", text: $password)
+                    .frame(width: 300.0, height: 50.0)
+                    .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.25))
+                    .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
+                    Spacer()
+                }
+            }
+        }
+    }
+    
+    private func return_backGroundColor() -> LinearGradient {
+        let MUM = My_UI_modules()
+
+        return MUM.backGroundColor()
     }
 }
 
