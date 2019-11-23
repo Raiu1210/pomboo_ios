@@ -9,14 +9,7 @@
 import SwiftUI
 
 struct Login_view: View {
-//    init(){
-//        UINavigationBar.appearance().backgroundColor = .white
-//        UINavigationBar.appearance().tintColor = .black
-//        UINavigationBar.appearance().barTintColor = .black
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
-//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.red]
-//    }
-    
+
     @State var email: String = ""
     @State var password: String = ""
     
@@ -54,7 +47,15 @@ struct Login_view: View {
                         .font(.headline)
                 }.padding()
                 
-
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Text("Login")
+                        .font(.headline)
+                        .foregroundColor(Color.blue)
+                        .frame(width: 200.0, height: 50)
+                        .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                        .cornerRadius(20.0)
+                        .shadow(radius: 20)
+                }
                 
                 Spacer()
             }
