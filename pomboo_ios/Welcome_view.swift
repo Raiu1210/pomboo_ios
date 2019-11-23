@@ -13,7 +13,7 @@ struct Welcome_view: View {
         NavigationView {
             ZStack {
                 self.return_backGroundColor().edgesIgnoringSafeArea(.all)
-                VStack (spacing: 80){
+                VStack (spacing: 60){
                     Text("welcome to pomboo!")
                         .font(.title)
                         .foregroundColor(Color.white)
