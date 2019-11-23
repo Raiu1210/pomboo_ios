@@ -17,6 +17,7 @@
 		3B57DEA723866D360055CFB4 /* SignUp_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B57DEA623866D360055CFB4 /* SignUp_view.swift */; };
 		3B57DEA923867AE60055CFB4 /* Login_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B57DEA823867AE50055CFB4 /* Login_view.swift */; };
 		3B57DEAD2387CA3A0055CFB4 /* _my_UI_modules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B57DEAC2387CA3A0055CFB4 /* _my_UI_modules.swift */; };
+		3B57DEAF23896ED10055CFB4 /* _api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B57DEAE23896ED10055CFB4 /* _api.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3B57DEA623866D360055CFB4 /* SignUp_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_view.swift; sourceTree = "<group>"; };
 		3B57DEA823867AE50055CFB4 /* Login_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_view.swift; sourceTree = "<group>"; };
 		3B57DEAC2387CA3A0055CFB4 /* _my_UI_modules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _my_UI_modules.swift; sourceTree = "<group>"; };
+		3B57DEAE23896ED10055CFB4 /* _api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _api.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				3B57DEA623866D360055CFB4 /* SignUp_view.swift */,
 				3B2DDD48237A9C2C0079BCA7 /* ContentView.swift */,
 				3B57DEAC2387CA3A0055CFB4 /* _my_UI_modules.swift */,
+				3B57DEAE23896ED10055CFB4 /* _api.swift */,
 				3B2DDD4A237A9C300079BCA7 /* Assets.xcassets */,
 				3B2DDD4F237A9C300079BCA7 /* LaunchScreen.storyboard */,
 				3B2DDD52237A9C300079BCA7 /* Info.plist */,
@@ -164,6 +167,7 @@
 				3B57DEAD2387CA3A0055CFB4 /* _my_UI_modules.swift in Sources */,
 				3B2DDD49237A9C2C0079BCA7 /* ContentView.swift in Sources */,
 				3B57DE85238635130055CFB4 /* Welcome_view.swift in Sources */,
+				3B57DEAF23896ED10055CFB4 /* _api.swift in Sources */,
 				3B57DEA723866D360055CFB4 /* SignUp_view.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

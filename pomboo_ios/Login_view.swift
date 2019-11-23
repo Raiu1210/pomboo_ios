@@ -12,6 +12,7 @@ struct Login_view: View {
 
     @State var email: String = ""
     @State var password: String = ""
+    @State var input_check: Bool = false
     
     var body: some View {
         ZStack {
@@ -47,7 +48,10 @@ struct Login_view: View {
                         .font(.headline)
                 }.padding()
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action: {
+                    self.check_input()
+                    self.post_data()
+                }) {
                     Text("Login")
                         .font(.headline)
                         .foregroundColor(Color.blue)
@@ -67,6 +71,26 @@ struct Login_view: View {
         let MUM = My_UI_modules()
 
         return MUM.backGroundColor()
+    }
+    
+    func check_input() {
+        if email == "" {
+            input_check = true
+        }
+        if password == "" {
+            input_check = true
+        }
+    }
+    
+    func post_data() {
+        if input_check {
+            print("aborted")
+            return
+        }
+        
+        let user = User(email: email, password: password)
+        let api = API()
+        api.login(user: user)
     }
 }
 
