@@ -10,33 +10,33 @@ import Foundation
 
 
 class API {
-    let urlString = "http://192.168.3.7:3000"
+    let urlString = "http://192.168.11.17:3000"
     let APSD_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
     
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
     func login(user: User) {
-        print(user)
-        
-        // post
+        // initialize destination info and form
         let destination = urlString + "/login"
         let url = URL(string: destination)!
         var request = URLRequest(url: url)
         let session = URLSession.shared
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        print(destination)
 
         do {
+            // create body
             let post_obj = try! encoder.encode(user)
             request.httpBody = post_obj
-            print(post_obj)
+            
+            // start session
             let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
                 let resultData = String(data: data!, encoding: .utf8)!
-                print("result:\(resultData)")
-                print("response:\(response)")
+                let dec_data = try! self.decoder.decode(Auth_result.self, from: data!)
+                print(dec_data.message)
+                print(dec_data.status)
+                print(dec_data.auth_id)
             })
             task.resume()
         } catch {
@@ -69,4 +69,10 @@ class API {
 struct User : Codable {
     var email : String
     var password : String
+}
+
+struct Auth_result : Codable {
+    var message : String
+    var status  : Int
+    var auth_id : Int
 }
