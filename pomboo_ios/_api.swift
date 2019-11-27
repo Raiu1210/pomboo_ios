@@ -39,8 +39,8 @@ class API {
             task.resume()
         } catch {
             print("Error:\(error)")
-            return
         }
+        
     }
     
     private func auth_handler(auth_result:Auth_result, user:User) {

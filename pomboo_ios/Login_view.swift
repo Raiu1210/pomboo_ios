@@ -20,7 +20,7 @@ struct Login_view: View {
             VStack (spacing: 30) {
                 VStack (spacing: 0) {
                     HStack {
-                        Text(" email")
+                        Text(" メールアドレス")
                         .font(.headline)
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
@@ -34,7 +34,7 @@ struct Login_view: View {
                         .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
                     
                     HStack {
-                        Text("  password")
+                        Text("  パスワード")
                         .font(.headline)
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
@@ -52,7 +52,7 @@ struct Login_view: View {
                     self.check_input()
                     self.post_data()
                 }) {
-                    Text("Login")
+                    Text("ログイン")
                         .font(.headline)
                         .foregroundColor(Color.blue)
                         .frame(width: 200.0, height: 50)
@@ -64,7 +64,11 @@ struct Login_view: View {
                 Spacer()
             }
         }
-        .navigationBarTitle("Login")
+        .navigationBarTitle(Text("ログイン")
+            .font(.title)
+            .foregroundColor(Color.white)
+        )
+//        .navigationBarBackButtonHidden(true)
     }
     
     private func return_backGroundColor() -> LinearGradient {
@@ -90,7 +94,7 @@ struct Login_view: View {
         
         let user = User(email: email, password: password)
         let api = API()
-        api.login(user: user)
+        let test = api.login(user: user)
     }
 }
 

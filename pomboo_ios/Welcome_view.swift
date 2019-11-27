@@ -14,13 +14,13 @@ struct Welcome_view: View {
             ZStack {
                 self.return_backGroundColor().edgesIgnoringSafeArea(.all)
                 VStack (spacing: 60){
-                    Text("welcome to pomboo!")
+                    Text("ようこそ pombooへ")
                         .font(.title)
                         .foregroundColor(Color.white)
 
                     VStack (spacing: 10) {
                         NavigationLink(destination: Login_view()) {
-                            Text("Login")
+                            Text("ログイン")
                                 .font(.headline)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 200.0, height: 50)
@@ -29,11 +29,11 @@ struct Welcome_view: View {
                             .shadow(radius: 20)
                         }
 
-                        Text("or")
+                        Text("または")
                             .foregroundColor(Color.white)
                         
                         NavigationLink(destination: SignUp_view()) {
-                            Text("Sign Up")
+                            Text("登録")
                                 .font(.headline)
                                 .foregroundColor(Color.white)
                             .frame(width: 200.0, height: 50)
