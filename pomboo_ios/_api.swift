@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class API {
@@ -20,8 +21,8 @@ class API {
         // initialize destination info and form
         let destination = urlString + "/login"
         let url = URL(string: destination)!
-        var request = URLRequest(url: url)
         let session = URLSession.shared
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
@@ -32,37 +33,40 @@ class API {
             
             // start session
             let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
-                let resultData = String(data: data!, encoding: .utf8)!
-                let dec_data = try! self.decoder.decode(Auth_result.self, from: data!)
-                print(dec_data.message)
-                print(dec_data.status)
-                print(dec_data.auth_id)
+                let auth_result = try! self.decoder.decode(Auth_result.self, from: data!)
+                self.auth_handler(auth_result: auth_result, user:user)
             })
             task.resume()
         } catch {
             print("Error:\(error)")
             return
         }
+    }
     
+    private func auth_handler(auth_result:Auth_result, user:User) {
+        if (auth_result.status == 0) {
+            // when auth succeeded, save its data to APSD dir as my_info.txt
+            let file_Name = "/my_info.txt"
+            let file_path = self.APSD_path + file_Name
             
-//            do {
-//                let file_path = APSD_path + "/user_info.txt"
-//                let user_info = try! encoder.encode(user)
-//                let user_info_str:String = String(data: user_info, encoding: .utf8)!
-//                try user_info_str.write(toFile: file_path, atomically: false, encoding: String.Encoding.utf8)
-//                print("Success")
-//
-//                print("Inside file is here")
-//                let file_url = NSURL(fileURLWithPath: file_path)
-//                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
-//                print(jsonString)
-//            } catch {
-//                print("Error:\(error)")
-//                return
-//            }
-//
-
+            // process my_info to save
+            let my_info = try! encoder.encode(user)
+            let my_info_str:String = String(data: my_info, encoding: .utf8)!
+            do {
+                try my_info_str.write(toFile: file_path, atomically: false, encoding: String.Encoding.utf8)
+                print("wrote file")
+                
+                print("Inside file is here")
+                let file_url = NSURL(fileURLWithPath: file_path)
+                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
+                print(jsonString)
+            } catch {
+                //エラー処理
+            }
         }
+    }
+    
+    
 }
 
 
