@@ -95,6 +95,8 @@ struct Login_view: View {
         let user = User(email: email, password: password)
         let api = API()
         let test = api.login(user: user)
+        
+        print("test : \(test)")
     }
 }
 

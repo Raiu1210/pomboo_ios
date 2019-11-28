@@ -17,7 +17,11 @@ class API {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
-    func login(user: User) {
+    
+    func login(user: User) -> Auth_result {
+        // for sync
+        let semaphore = DispatchSemaphore(value: 0)
+        
         // initialize destination info and form
         let destination = urlString + "/login"
         let url = URL(string: destination)!
@@ -25,6 +29,12 @@ class API {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        var auth_result = Auth_result(
+            message : "not response",
+            status : -1,
+            auth_id: -1
+        )
 
         do {
             // create body
@@ -33,14 +43,21 @@ class API {
             
             // start session
             let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
-                let auth_result = try! self.decoder.decode(Auth_result.self, from: data!)
-                self.auth_handler(auth_result: auth_result, user:user)
+                print(data)
+                let tmp_auth_result = try! self.decoder.decode(Auth_result.self, from: data!)
+                self.auth_handler(auth_result: tmp_auth_result, user:user)
+                auth_result.message = tmp_auth_result.message
+                auth_result.status  = tmp_auth_result.status
+                auth_result.auth_id = tmp_auth_result.auth_id
+                semaphore.signal()
             })
             task.resume()
+            semaphore.wait()
         } catch {
             print("Error:\(error)")
         }
         
+        return auth_result
     }
     
     private func auth_handler(auth_result:Auth_result, user:User) {
