@@ -11,7 +11,11 @@ import SwiftUI
 struct Login_Button: View {
     var email: String = ""
     var password: String = ""
+    @Binding var auth_id: Int
+    @Binding var is_authed: Bool
+    
     @State var input_check: Bool = false
+    
     
     var body: some View {
         Button(action: {
@@ -48,15 +52,18 @@ struct Login_Button: View {
         
         let user = User(email: email, password: password)
         let api = API()
-        let test = api.login(user: user)
+        let auth_result = api.login(user: user)
         
-        print("user : \(user)")
+        if (auth_result.status == 0) {
+            self.auth_id = auth_result.auth_id
+            self.is_authed = true
+        }
     }
 }
 
-struct Login_Button_Previews: PreviewProvider {
-    static var previews: some View {
-        Login_Button(email: "baio1484@gmail.com", password: "oppai")
-    }
-}
+//struct Login_Button_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Login_Button(email: "baio1484@gmail.com", password: "oppai")
+//    }
+//}
 

@@ -16,6 +16,24 @@ struct Login_view: View {
     @State var auth_id:Int = 0
     
     var body: some View {
+        switch is_authed {
+        case true:
+            return AnyView(Home(my_id: auth_id))
+        default:
+            return AnyView(Login_form(email: $email, password: $password, is_authed: $is_authed, auth_id: $auth_id))
+        }
+    }
+}
+
+
+struct Login_form: View {
+    @Binding var email:String
+    @Binding var password:String
+    @Binding var is_authed:Bool
+    @Binding var auth_id:Int
+    
+    
+    var body: some View {
         ZStack {
             self.return_backGroundColor().edgesIgnoringSafeArea(.all)
             VStack (spacing: 30) {
@@ -25,7 +43,7 @@ struct Login_view: View {
                         Spacer()
                     }.padding()
                     Input_Field(place_holder:" xxxyyyzzz@pomboo.com", binder: $email)
-                    
+
 
                     HStack {
                         Guide_Label(label_text: "  パスワード")
@@ -33,8 +51,8 @@ struct Login_view: View {
                     }.padding()
                     Input_Field(place_holder:"  password", binder: $password)
                 }.padding()
-                
-                Login_Button(email:email, password:password)
+
+                Login_Button(email:email, password:password, auth_id:$auth_id , is_authed:$is_authed)
                 Spacer()
             }
         }
