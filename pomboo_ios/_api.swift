@@ -11,7 +11,7 @@ import UIKit
 
 
 class API {
-    let urlString = "http://192.168.11.17:3000"
+    let urlString = "http://192.168.11.4:3000"
     let APSD_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
     
     let encoder = JSONEncoder()
@@ -82,18 +82,5 @@ class API {
             }
         }
     }
-    
-    
 }
 
-
-struct User : Codable {
-    var email : String
-    var password : String
-}
-
-struct Auth_result : Codable {
-    var message : String
-    var status  : Int
-    var auth_id : Int
-}

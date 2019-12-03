@@ -20,47 +20,20 @@ struct Login_view: View {
             VStack (spacing: 30) {
                 VStack (spacing: 0) {
                     HStack {
-                        Text(" メールアドレス")
-                        .font(.headline)
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.leading)
-                        
+                        Guide_Label(label_text: " メールアドレス")
                         Spacer()
                     }.padding()
+                    Input_Field(place_holder:" xxxyyyzzz@pomboo.com", binder: $email)
                     
-                    TextField("  pomboo@xxx.com", text: $email)
-                        .frame(width: 300.0, height: 50.0)
-                        .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.15))
-                        .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/)
-                    
+
                     HStack {
-                        Text("  パスワード")
-                        .font(.headline)
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.leading)
-                        
+                        Guide_Label(label_text: "  パスワード")
                         Spacer()
                     }.padding()
-                    
-                    TextField("  password", text: $password)
-                        .frame(width: 300.0, height: 50.0)
-                        .background(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.15))
-                        .font(.headline)
+                    Input_Field(place_holder:"  password", binder: $password)
                 }.padding()
                 
-                Button(action: {
-                    self.check_input()
-                    self.post_data()
-                }) {
-                    Text("ログイン")
-                        .font(.headline)
-                        .foregroundColor(Color.blue)
-                        .frame(width: 200.0, height: 50)
-                        .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(20.0)
-                        .shadow(radius: 20)
-                }
-                
+                Login_Button(email:email, password:password)
                 Spacer()
             }
         }
@@ -68,35 +41,11 @@ struct Login_view: View {
             .font(.title)
             .foregroundColor(Color.white)
         )
-//        .navigationBarBackButtonHidden(true)
     }
     
     private func return_backGroundColor() -> LinearGradient {
         let MUM = My_UI_modules()
-
         return MUM.backGroundColor()
-    }
-    
-    func check_input() {
-        if email == "" {
-            input_check = true
-        }
-        if password == "" {
-            input_check = true
-        }
-    }
-    
-    func post_data() {
-        if input_check {
-            print("aborted")
-            return
-        }
-        
-        let user = User(email: email, password: password)
-        let api = API()
-        let test = api.login(user: user)
-        
-        print("test : \(test)")
     }
 }
 
@@ -105,3 +54,4 @@ struct Login_view_Previews: PreviewProvider {
         Login_view()
     }
 }
+
