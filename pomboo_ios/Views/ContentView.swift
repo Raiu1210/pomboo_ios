@@ -9,13 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    var auth_result:Auth_result
+    
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            if (auth_result.status == 0) {
+                Home(my_id: auth_result.auth_id)
+            } else {
+                Welcome_view()
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

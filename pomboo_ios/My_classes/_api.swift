@@ -43,7 +43,6 @@ class API {
             
             // start session
             let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
-                print(data)
                 let tmp_auth_result = try! self.decoder.decode(Auth_result.self, from: data!)
                 self.auth_handler(auth_result: tmp_auth_result, user:user)
                 auth_result.message = tmp_auth_result.message
@@ -83,7 +82,7 @@ class API {
         }
     }
     
-    func is_my_info_valid() -> Bool {
+    func is_my_info_valid() -> Auth_result {
         // when my_info exists, check it's valid or not
         if (is_exist_my_info()) {
             let file_Name = "/my_info.txt"
@@ -96,19 +95,21 @@ class API {
                 let my_info = try! JSONDecoder().decode(User.self, from: jsonData)
                 let auth_result = self.login(user: my_info)
                 
-                if (auth_result.status == 0) {
-                    return true
-                }
+                return auth_result
             } catch {
                 print("aborted")
             }
-            
-            // auth doesn't succeeded
-            return false
-        } else {
-            print("my_info is not valid")
-            return false
         }
+        
+        // if my_info.txt doesn't exist
+        print("my_info doesn't exist")
+        let no_exist = Auth_result(
+            message: "my_info.txt doesn't exist",
+            status: -1,
+            auth_id: -1
+        )
+        
+        return no_exist
     }
     
     func is_exist_my_info() -> Bool {

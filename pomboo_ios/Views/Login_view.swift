@@ -10,9 +10,10 @@ import SwiftUI
 
 struct Login_view: View {
 
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var input_check: Bool = false
+    @State var email:String = ""
+    @State var password:String = ""
+    @State var is_authed:Bool = false
+    @State var auth_id:Int = 0
     
     var body: some View {
         ZStack {
@@ -49,9 +50,11 @@ struct Login_view: View {
     }
 }
 
-struct Login_view_Previews: PreviewProvider {
-    static var previews: some View {
-        Login_view()
-    }
-}
+
+
+//struct Login_view_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Login_view()
+//    }
+//}
 

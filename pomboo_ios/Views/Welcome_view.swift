@@ -10,41 +10,39 @@ import SwiftUI
 
 struct Welcome_view: View {
     var body: some View {
-        NavigationView {
-            ZStack {
-                self.return_backGroundColor().edgesIgnoringSafeArea(.all)
-                VStack (spacing: 60){
-                    Text("ようこそ pombooへ")
-                        .font(.title)
-                        .foregroundColor(Color.white)
+        ZStack {
+            self.return_backGroundColor().edgesIgnoringSafeArea(.all)
+            VStack (spacing: 60){
+                Text("ようこそ pombooへ")
+                    .font(.title)
+                    .foregroundColor(Color.white)
 
-                    VStack (spacing: 10) {
-                        NavigationLink(destination: Login_view()) {
-                            Text("ログイン")
-                                .font(.headline)
-                                .foregroundColor(Color.blue)
-                                .frame(width: 200.0, height: 50)
-                            .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                            .cornerRadius(20.0)
-                            .shadow(radius: 20)
-                        }
-
-                        Text("または")
-                            .foregroundColor(Color.white)
-                        
-                        NavigationLink(destination: SignUp_view()) {
-                            Text("登録")
-                                .font(.headline)
-                                .foregroundColor(Color.white)
+                VStack (spacing: 10) {
+                    NavigationLink(destination: Login_view()) {
+                        Text("ログイン")
+                            .font(.headline)
+                            .foregroundColor(Color.blue)
                             .frame(width: 200.0, height: 50)
-                            .cornerRadius(20.0)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.white, lineWidth: 2)
-                            )
-                        }
-                    }.padding(70)
-                }
+                        .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                        .cornerRadius(20.0)
+                        .shadow(radius: 20)
+                    }
+
+                    Text("または")
+                        .foregroundColor(Color.white)
+                    
+                    NavigationLink(destination: SignUp_view()) {
+                        Text("登録")
+                            .font(.headline)
+                            .foregroundColor(Color.white)
+                        .frame(width: 200.0, height: 50)
+                        .cornerRadius(20.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                    }
+                }.padding(70)
             }
         }
     }
