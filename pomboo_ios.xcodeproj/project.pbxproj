@@ -22,6 +22,7 @@
 		3BB32F6F23910F510018B586 /* Login_Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB32F6E23910F510018B586 /* Login_Button.swift */; };
 		3BB32F71239127F40018B586 /* Input_Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB32F70239127F40018B586 /* Input_Field.swift */; };
 		3BBE271B239105A7001F1759 /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE271A239105A7001F1759 /* models.swift */; };
+		3BFEB4B62396363900014C9B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFEB4B52396363900014C9B /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3BB32F6E23910F510018B586 /* Login_Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_Button.swift; sourceTree = "<group>"; };
 		3BB32F70239127F40018B586 /* Input_Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input_Field.swift; sourceTree = "<group>"; };
 		3BBE271A239105A7001F1759 /* models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
+		3BFEB4B52396363900014C9B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				3B57DEA623866D360055CFB4 /* SignUp_view.swift */,
 				3B57DE84238635120055CFB4 /* Welcome_view.swift */,
 				3B57DEA823867AE50055CFB4 /* Login_view.swift */,
+				3BFEB4B52396363900014C9B /* Home.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				3B2DDD45237A9C2C0079BCA7 /* AppDelegate.swift in Sources */,
 				3B2DDD47237A9C2C0079BCA7 /* SceneDelegate.swift in Sources */,
 				3B57DEAD2387CA3A0055CFB4 /* _my_UI_modules.swift in Sources */,
+				3BFEB4B62396363900014C9B /* Home.swift in Sources */,
 				3BB32F6D23910D250018B586 /* Guide_Label.swift in Sources */,
 				3BB32F71239127F40018B586 /* Input_Field.swift in Sources */,
 				3B2DDD49237A9C2C0079BCA7 /* ContentView.swift in Sources */,

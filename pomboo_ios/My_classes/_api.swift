@@ -71,15 +71,54 @@ class API {
             let my_info_str:String = String(data: my_info, encoding: .utf8)!
             do {
                 try my_info_str.write(toFile: file_path, atomically: false, encoding: String.Encoding.utf8)
-                print("wrote file")
-                
-                print("Inside file is here")
-                let file_url = NSURL(fileURLWithPath: file_path)
-                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
-                print(jsonString)
+//                print("wrote file")
+//
+//                print("Inside file is here")
+//                let file_url = NSURL(fileURLWithPath: file_path)
+//                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
+//                print(jsonString)
             } catch {
                 //エラー処理
             }
+        }
+    }
+    
+    func is_my_info_valid() -> Bool {
+        // when my_info exists, check it's valid or not
+        if (is_exist_my_info()) {
+            let file_Name = "/my_info.txt"
+            let file_path = self.APSD_path + file_Name
+            let file_url = NSURL(fileURLWithPath: file_path)
+            
+            do {
+                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
+                let jsonData = jsonString.data(using: .utf8)!
+                let my_info = try! JSONDecoder().decode(User.self, from: jsonData)
+                let auth_result = self.login(user: my_info)
+                
+                if (auth_result.status == 0) {
+                    return true
+                }
+            } catch {
+                print("aborted")
+            }
+            
+            // auth doesn't succeeded
+            return false
+        } else {
+            print("my_info is not valid")
+            return false
+        }
+    }
+    
+    func is_exist_my_info() -> Bool {
+        // check my_info.txt exists or not in Application Support Dirctory
+        if(FileManager.default.fileExists( atPath: self.APSD_path +  "/my_info.txt")) {
+            print("ファイルあり")
+            return true
+        } else {
+            print("ファイルなし")
+            return false
         }
     }
 }
