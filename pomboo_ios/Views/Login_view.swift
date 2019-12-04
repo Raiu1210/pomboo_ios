@@ -39,18 +39,8 @@ struct Login_form: View {
             self.return_backGroundColor().edgesIgnoringSafeArea(.all)
             VStack (spacing: 30) {
                 VStack (spacing: 0) {
-                    HStack {
-                        Guide_Label(label_text: " メールアドレス")
-                        Spacer()
-                    }.padding()
-                    Input_Field(place_holder:" xxxyyyzzz@pomboo.com", binder: $email)
-
-
-                    HStack {
-                        Guide_Label(label_text: "  パスワード")
-                        Spacer()
-                    }.padding()
-                    Input_Field(place_holder:"  password", binder: $password)
+                    Input_Form(guide_text: " メールアドレス", place_holder: " xxxyyyzzz@pomboo.com", binder: $email)
+                    Input_Form(guide_text: "  パスワード", place_holder: "  password", binder: $password)
                 }.padding()
 
                 Login_Button(email:email, password:password, auth_id:$auth_id , is_authed:$is_authed)
