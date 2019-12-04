@@ -12,7 +12,8 @@ struct Welcome_view: View {
     var body: some View {
         ZStack {
             self.return_backGroundColor().edgesIgnoringSafeArea(.all)
-            VStack (spacing: 60){
+            
+            VStack (spacing: 50){
                 Text("ようこそ pombooへ")
                     .font(.title)
                     .foregroundColor(Color.white)
@@ -44,6 +45,7 @@ struct Welcome_view: View {
                     }
                 }.padding(70)
             }
+            
         }
     }
     

@@ -23,6 +23,7 @@ struct Login_view: View {
             return AnyView(Login_form(email: $email, password: $password, is_authed: $is_authed, auth_id: $auth_id))
         }
     }
+
 }
 
 
@@ -56,10 +57,6 @@ struct Login_form: View {
                 Spacer()
             }
         }
-        .navigationBarTitle(Text("ログイン")
-            .font(.title)
-            .foregroundColor(Color.white)
-        )
     }
     
     private func return_backGroundColor() -> LinearGradient {
