@@ -28,7 +28,7 @@ struct SignUp_view: View {
                         Input_Form(guide_text: "  表示名", place_holder: "  らいう", binder: $user_name)
                     }.padding()
                     
-                    Register_Button(email: $email, password: $password, password_check: $password_check, user_name: $user_name)
+                    Register_Button(email: email, password: password, password_check: password_check, user_name: user_name)
                     Spacer(minLength: 350)
                 }
             }

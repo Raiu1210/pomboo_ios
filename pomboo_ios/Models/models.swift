@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// struct for login
 struct User : Codable {
     var email : String
     var password : String
@@ -18,4 +18,12 @@ struct Auth_result : Codable {
     var message : String
     var status  : Int
     var auth_id : Int
+}
+
+
+// struct for register
+struct Register_info : Codable {
+    var email : String
+    var password : String
+    var user_name : String
 }

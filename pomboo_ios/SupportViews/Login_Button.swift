@@ -11,6 +11,7 @@ import SwiftUI
 struct Login_Button: View {
     var email: String = ""
     var password: String = ""
+    
     @Binding var auth_id: Int
     @Binding var is_authed: Bool
     
@@ -42,7 +43,7 @@ struct Login_Button: View {
     }
     
     func post_data() {
-        if input_check {
+        if (input_check) {
             print("aborted")
             return
         }

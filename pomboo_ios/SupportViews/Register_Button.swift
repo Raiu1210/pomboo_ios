@@ -9,15 +9,17 @@
 import SwiftUI
 
 struct Register_Button: View {
-    @Binding var email:String
-    @Binding var password:String
-    @Binding var password_check:String
-    @Binding var user_name:String
+    var email:String
+    var password:String
+    var password_check:String
+    var user_name:String
     
+    @State var input_check: Bool = false
     
     var body: some View {
         Button(action: {
-            self.input_check()
+            self.check_input()
+            
         }) {
             Text("登録")
                 .font(.headline)
@@ -29,7 +31,22 @@ struct Register_Button: View {
         }
     }
     
-    func input_check() {
+    func check_input() {
+        if email == "" {
+            input_check = true
+        }
+        if password == "" {
+            input_check = true
+        }
+        if password_check == "" {
+            input_check = true
+        }
+        if user_name == "" {
+            input_check = true
+        }
+    }
+    
+    func post_register_info(register_info:Register_info) {
         
     }
 }
