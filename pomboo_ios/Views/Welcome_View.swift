@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Welcome_view: View {
+struct Welcome_View: View {
     var body: some View {
         ZStack {
             self.return_backGroundColor().edgesIgnoringSafeArea(.all)
@@ -19,7 +19,7 @@ struct Welcome_view: View {
                     .foregroundColor(Color.white)
 
                 VStack (spacing: 10) {
-                    NavigationLink(destination: Login_view()) {
+                    NavigationLink(destination: Login_View()) {
                         Text("ログイン")
                             .font(.headline)
                             .foregroundColor(Color.blue)
@@ -56,8 +56,8 @@ struct Welcome_view: View {
     }
 }
 
-struct Welcome_view_Previews: PreviewProvider {
+struct Welcome_View_Previews: PreviewProvider {
     static var previews: some View {
-        Welcome_view()
+        Welcome_View()
     }
 }

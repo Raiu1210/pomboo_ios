@@ -16,7 +16,7 @@ struct ContentView: View {
             if (auth_result.status == 0) {
                 Home(my_id: auth_result.auth_id)
             } else {
-                Welcome_view()
+                Welcome_View()
             }
         }
     }
