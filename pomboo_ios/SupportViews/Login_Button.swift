@@ -48,9 +48,6 @@ struct Login_Button: View {
             return
         }
         
-        print(email)
-        print(password)
-        
         let user = User(email: email, password: password)
         let api = API()
         let auth_result = api.login(user: user)

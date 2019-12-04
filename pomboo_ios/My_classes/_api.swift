@@ -70,12 +70,6 @@ class API {
             let my_info_str:String = String(data: my_info, encoding: .utf8)!
             do {
                 try my_info_str.write(toFile: file_path, atomically: false, encoding: String.Encoding.utf8)
-//                print("wrote file")
-//
-//                print("Inside file is here")
-//                let file_url = NSURL(fileURLWithPath: file_path)
-//                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
-//                print(jsonString)
             } catch {
                 //エラー処理
             }
@@ -120,6 +114,44 @@ class API {
         } else {
             print("ファイルなし")
             return false
+        }
+    }
+    
+    
+    func register(register_info:Register_info) {
+        // for sync
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        // initialize destination info and form
+        let destination = urlString + "/registration"
+        let url = URL(string: destination)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        var registeration_result = Register_result(
+            message: "not response",
+            user_id: -1
+        )
+        
+        do {
+            // create body
+            let post_obj = try! encoder.encode(register_info)
+            request.httpBody = post_obj
+            
+            // start session
+            let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
+                let tmp_registration_result = try! self.decoder.decode(Register_result.self, from: data!)
+//                self.auth_handler(auth_result: tmp_auth_result, user:user)
+                registeration_result.message = tmp_registration_result.message
+                registeration_result.user_id  = tmp_registration_result.user_id
+                semaphore.signal()
+            })
+            task.resume()
+            semaphore.wait()
+        } catch {
+            print("Error:\(error)")
         }
     }
 }

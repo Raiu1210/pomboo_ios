@@ -46,7 +46,15 @@ struct Register_Button: View {
         }
     }
     
-    func post_register_info(register_info:Register_info) {
+    func post_register_info() {
+        if (input_check) {
+            print("aborted")
+            return
+        }
+        
+        let register_info = Register_info(email: email, password: password, user_name: user_name)
+        let api = API()
+        
         
     }
 }

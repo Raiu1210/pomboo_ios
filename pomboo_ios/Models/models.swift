@@ -27,3 +27,8 @@ struct Register_info : Codable {
     var password : String
     var user_name : String
 }
+
+struct Register_result : Codable {
+    var message : String
+    var user_id : Int
+}
