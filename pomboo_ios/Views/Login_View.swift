@@ -12,14 +12,15 @@ struct Login_View: View {
 
     @State var email:String = ""
     @State var password:String = ""
-    @State var is_authed:Bool = false
     @State var auth_id:Int = 0
     @State var user_name:String = ""
+    
+    @State var is_authed:Bool = false
     
     var body: some View {
         switch is_authed {
         case true:
-            return AnyView(Home(my_id: auth_id, user_name: user_name))
+            return AnyView(Home(user_id: auth_id, user_name: user_name))
         default:
             return AnyView(Login_form(email: $email, password: $password, is_authed: $is_authed, auth_id: $auth_id, user_name: $user_name))
         }

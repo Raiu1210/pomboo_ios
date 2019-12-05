@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct Home: View {
-    let my_id:Int
+    let user_id:Int
     let user_name:String
     
     var body: some View {
         VStack {
             Text("This is Home")
-            Text("Your ID : \(my_id)")
+            Text("Your ID : \(user_id)")
             Text("Hello : \(user_name)")
         }
 
@@ -24,6 +24,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home(my_id: -1, user_name:"raiu")
+        Home(user_id: -1, user_name:"raiu")
     }
 }

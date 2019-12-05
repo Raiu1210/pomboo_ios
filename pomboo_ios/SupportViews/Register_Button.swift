@@ -14,6 +14,9 @@ struct Register_Button: View {
     var password_check:String
     var user_name:String
     
+    @Binding var user_id: Int
+    @Binding var is_registered: Bool
+    
     @State var input_check: Bool = false
     
     var body: some View {
@@ -55,6 +58,11 @@ struct Register_Button: View {
         let register_info = Register_info(email: email, password: password, user_name: user_name)
         let api = API()
         let register_result = api.register(register_info: register_info)
+        
+        if (register_result.status == 0) {
+            self.is_registered = true
+            self.user_id = register_result.user_id
+        }
         
         print(register_result)
     }

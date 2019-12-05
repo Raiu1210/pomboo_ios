@@ -13,7 +13,30 @@ struct SignUp_view: View {
     @State var password:String = ""
     @State var password_check:String = ""
     @State var user_name:String = ""
+    @State var user_id:Int = 0
     
+    @State var is_registered:Bool = false
+    
+    var body: some View {
+        switch is_registered {
+        case true:
+            return AnyView(Home(user_id:user_id, user_name:user_name))
+        default:
+            return AnyView(Sign_UP_form(email: $email, password: $password, password_check: $password_check, user_name: $user_name, user_id: $user_id, is_registered: $is_registered))
+        }
+    }
+}
+
+
+
+struct Sign_UP_form: View {
+    @Binding var email:String
+    @Binding var password:String
+    @Binding var password_check:String
+    @Binding var user_name:String
+    @Binding var user_id:Int
+    
+    @Binding var is_registered:Bool
     var body: some View {
         ZStack {
             self.return_backGroundColor().edgesIgnoringSafeArea(.all)
@@ -28,7 +51,7 @@ struct SignUp_view: View {
                         Input_Form(guide_text: "  表示名", place_holder: "  らいう", binder: $user_name)
                     }.padding()
                     
-                    Register_Button(email: email, password: password, password_check: password_check, user_name: user_name)
+                    Register_Button(email: email, password: password, password_check: password_check, user_name: user_name, user_id: $user_id, is_registered: $is_registered)
                     Spacer(minLength: 350)
                 }
             }
@@ -39,15 +62,6 @@ struct SignUp_view: View {
         let MUM = My_UI_modules()
         return MUM.backGroundColor()
     }
-}
-
-
-
-struct Sign_UP_form: View {
-    var body: some View {
-        Text("Hey")
-    }
-    
 }
 
 //struct SignUp_view_Previews: PreviewProvider {

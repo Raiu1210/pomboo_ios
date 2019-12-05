@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             if (auth_result.status == 0) {
-                Home(my_id: auth_result.auth_id, user_name: auth_result.user_name)
+                Home(user_id: auth_result.auth_id, user_name: auth_result.user_name)
             } else {
                 Welcome_View()
             }
