@@ -15,9 +15,10 @@ struct User : Codable {
 }
 
 struct Auth_result : Codable {
-    var message : String
-    var status  : Int
-    var auth_id : Int
+    var message   : String
+    var status    : Int
+    var auth_id   : Int
+    var user_name : String
 }
 
 
@@ -29,6 +30,8 @@ struct Register_info : Codable {
 }
 
 struct Register_result : Codable {
-    var message : String
-    var user_id : Int
+    var message   : String
+    var status    : Int
+    var user_id   : Int
+    var user_name : String
 }

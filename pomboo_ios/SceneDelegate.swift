@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let auth_from_my_info = api.is_my_info_valid()
-            let auth_id = auth_from_my_info.auth_id
             
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: ContentView(auth_result: auth_from_my_info))

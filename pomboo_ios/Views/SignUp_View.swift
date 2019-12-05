@@ -41,8 +41,17 @@ struct SignUp_view: View {
     }
 }
 
-struct SignUp_view_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUp_view()
+
+
+struct Sign_UP_form: View {
+    var body: some View {
+        Text("Hey")
     }
+    
 }
+
+//struct SignUp_view_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUp_view()
+//    }
+//}

@@ -19,7 +19,7 @@ struct Register_Button: View {
     var body: some View {
         Button(action: {
             self.check_input()
-            
+            self.post_register_info()
         }) {
             Text("登録")
                 .font(.headline)
@@ -54,8 +54,9 @@ struct Register_Button: View {
         
         let register_info = Register_info(email: email, password: password, user_name: user_name)
         let api = API()
+        let register_result = api.register(register_info: register_info)
         
-        
+        print(register_result)
     }
 }
 

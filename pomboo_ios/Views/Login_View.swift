@@ -14,13 +14,14 @@ struct Login_View: View {
     @State var password:String = ""
     @State var is_authed:Bool = false
     @State var auth_id:Int = 0
+    @State var user_name:String = ""
     
     var body: some View {
         switch is_authed {
         case true:
-            return AnyView(Home(my_id: auth_id))
+            return AnyView(Home(my_id: auth_id, user_name: user_name))
         default:
-            return AnyView(Login_form(email: $email, password: $password, is_authed: $is_authed, auth_id: $auth_id))
+            return AnyView(Login_form(email: $email, password: $password, is_authed: $is_authed, auth_id: $auth_id, user_name: $user_name))
         }
     }
 
@@ -32,6 +33,7 @@ struct Login_form: View {
     @Binding var password:String
     @Binding var is_authed:Bool
     @Binding var auth_id:Int
+    @Binding var user_name:String
     
     
     var body: some View {
@@ -43,7 +45,7 @@ struct Login_form: View {
                     Input_Form(guide_text: "  パスワード", place_holder: "  password", binder: $password)
                 }.padding()
 
-                Login_Button(email:email, password:password, auth_id:$auth_id , is_authed:$is_authed)
+                Login_Button(email:email, password:password, auth_id:$auth_id , is_authed:$is_authed, user_name: $user_name)
                 Spacer()
             }
         }

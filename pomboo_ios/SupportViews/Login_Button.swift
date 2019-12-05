@@ -14,6 +14,7 @@ struct Login_Button: View {
     
     @Binding var auth_id: Int
     @Binding var is_authed: Bool
+    @Binding var user_name: String
     
     @State var input_check: Bool = false
     
@@ -52,9 +53,12 @@ struct Login_Button: View {
         let api = API()
         let auth_result = api.login(user: user)
         
+        print(auth_result)
+        
         if (auth_result.status == 0) {
             self.auth_id = auth_result.auth_id
             self.is_authed = true
+            self.user_name = auth_result.user_name
         }
     }
 }

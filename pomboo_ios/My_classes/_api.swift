@@ -11,7 +11,7 @@ import UIKit
 
 
 class API {
-    let urlString = "http://192.168.11.4:3000"
+    let urlString = "http://192.168.11.6:3000"
     let APSD_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
     
     let encoder = JSONEncoder()
@@ -33,7 +33,8 @@ class API {
         var auth_result = Auth_result(
             message : "not response",
             status : -1,
-            auth_id: -1
+            auth_id: -1,
+            user_name: "none"
         )
 
         do {
@@ -45,9 +46,10 @@ class API {
             let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
                 let tmp_auth_result = try! self.decoder.decode(Auth_result.self, from: data!)
                 self.auth_handler(auth_result: tmp_auth_result, user:user)
-                auth_result.message = tmp_auth_result.message
-                auth_result.status  = tmp_auth_result.status
-                auth_result.auth_id = tmp_auth_result.auth_id
+                auth_result.message   = tmp_auth_result.message
+                auth_result.status    = tmp_auth_result.status
+                auth_result.auth_id   = tmp_auth_result.auth_id
+                auth_result.user_name = tmp_auth_result.user_name
                 semaphore.signal()
             })
             task.resume()
@@ -100,7 +102,8 @@ class API {
         let no_exist = Auth_result(
             message: "my_info.txt doesn't exist",
             status: -1,
-            auth_id: -1
+            auth_id: -1,
+            user_name: "none"
         )
         
         return no_exist
@@ -118,7 +121,8 @@ class API {
     }
     
     
-    func register(register_info:Register_info) {
+    func register(register_info:Register_info) -> Register_result {
+        print("called")
         // for sync
         let semaphore = DispatchSemaphore(value: 0)
         
@@ -132,7 +136,9 @@ class API {
         
         var registeration_result = Register_result(
             message: "not response",
-            user_id: -1
+            status: -1,
+            user_id: -1,
+            user_name: "air man"
         )
         
         do {
@@ -144,8 +150,10 @@ class API {
             let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
                 let tmp_registration_result = try! self.decoder.decode(Register_result.self, from: data!)
 //                self.auth_handler(auth_result: tmp_auth_result, user:user)
-                registeration_result.message = tmp_registration_result.message
-                registeration_result.user_id  = tmp_registration_result.user_id
+                registeration_result.message   = tmp_registration_result.message
+                registeration_result.status    = tmp_registration_result.status
+                registeration_result.user_id   = tmp_registration_result.user_id
+                registeration_result.user_name = tmp_registration_result.user_name
                 semaphore.signal()
             })
             task.resume()
@@ -153,6 +161,8 @@ class API {
         } catch {
             print("Error:\(error)")
         }
+        
+        return registeration_result
     }
 }
 
