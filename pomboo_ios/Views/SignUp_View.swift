@@ -20,7 +20,10 @@ struct SignUp_view: View {
     var body: some View {
         switch is_registered {
         case true:
-            return AnyView(Home(user_id:user_id, user_name:user_name))
+            return AnyView(Home(user_id:user_id, user_name:user_name)
+                .navigationBarTitle("")
+                .navigationBarBackButtonHidden(true)
+            )
         default:
             return AnyView(Sign_UP_form(email: $email, password: $password, password_check: $password_check, user_name: $user_name, user_id: $user_id, is_registered: $is_registered))
         }

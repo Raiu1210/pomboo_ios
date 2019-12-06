@@ -11,7 +11,7 @@ import UIKit
 
 
 class API {
-    let urlString = "http://192.168.11.6:3000"
+    let urlString = "http://192.168.11.4:3000"
     let APSD_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
     
     let encoder = JSONEncoder()

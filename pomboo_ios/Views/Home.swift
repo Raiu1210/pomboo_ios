@@ -13,12 +13,29 @@ struct Home: View {
     let user_name:String
     
     var body: some View {
-        VStack {
-            Text("This is Home")
-            Text("Your ID : \(user_id)")
-            Text("Hello : \(user_name)")
+        TabView {
+            VStack {
+                Text("This is Home")
+                Text("Your ID : \(user_id)")
+                Text("Hello : \(user_name)")
+            }
+                .tabItem {
+                    Image(systemName: "1.square.fill")
+                    Text("First")
+                }
+            
+            Text("Another Tab")
+                .tabItem {
+                    Image(systemName: "2.square.fill")
+                    Text("Second")
+                }
+            Text("The Last Tab")
+                .tabItem {
+                    Image(systemName: "3.square.fill")
+                    Text("Third")
+                }
         }
-
+        .font(.headline)
     }
 }
 

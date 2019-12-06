@@ -20,7 +20,10 @@ struct Login_View: View {
     var body: some View {
         switch is_authed {
         case true:
-            return AnyView(Home(user_id: auth_id, user_name: user_name))
+            return AnyView(Home(user_id: auth_id, user_name: user_name)
+                .navigationBarTitle("")
+                .navigationBarBackButtonHidden(true)
+            )
         default:
             return AnyView(Login_form(email: $email, password: $password, is_authed: $is_authed, auth_id: $auth_id, user_name: $user_name))
         }
