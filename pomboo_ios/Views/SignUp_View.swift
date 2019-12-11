@@ -20,7 +20,7 @@ struct SignUp_view: View {
     var body: some View {
         switch is_registered {
         case true:
-            return AnyView(Home(user_id:user_id, user_name:user_name)
+            return AnyView(User_Tab_View(user_id:user_id, user_name:user_name)
                 .navigationBarTitle("")
                 .navigationBarBackButtonHidden(true)
             )
