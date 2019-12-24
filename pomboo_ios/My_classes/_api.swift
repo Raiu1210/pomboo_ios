@@ -11,7 +11,7 @@ import UIKit
 
 
 class API {
-    let urlString = "http://192.168.11.4:3000"
+    let urlString = "http://192.168.11.12:3000"
     let APSD_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
     
     let encoder = JSONEncoder()
@@ -80,21 +80,24 @@ class API {
     
     func is_my_info_valid() -> Auth_result {
         // when my_info exists, check it's valid or not
+        
+        let semaphore = DispatchSemaphore(value: 0)
         if (is_exist_my_info()) {
-            let file_Name = "/my_info.txt"
-            let file_path = self.APSD_path + file_Name
-            let file_url = NSURL(fileURLWithPath: file_path)
+            var auth_result = Auth_result(
+                message: "no",
+                status: -1,
+                auth_id: -1,
+                user_name: "no")
             
-            do {
-                let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
-                let jsonData = jsonString.data(using: .utf8)!
-                let my_info = try! JSONDecoder().decode(User.self, from: jsonData)
-                let auth_result = self.login(user: my_info)
-                
-                return auth_result
-            } catch {
-                print("aborted")
+            DispatchQueue.global().async {
+                let my_info = self.load_my_info()
+                auth_result = self.login(user: my_info)
+                semaphore.signal()
             }
+            semaphore.wait()
+            print(auth_result)
+            
+            return auth_result
         }
         
         // if my_info.txt doesn't exist
@@ -120,9 +123,32 @@ class API {
         }
     }
     
+    func load_my_info() -> User {
+        let file_Name = "/my_info.txt"
+        let file_path = self.APSD_path + file_Name
+        let file_url = NSURL(fileURLWithPath: file_path)
+        
+        do {
+            let jsonString = try String(contentsOf: file_url as URL, encoding: String.Encoding.utf8)
+            let jsonData = jsonString.data(using: .utf8)!
+            let my_info = try! JSONDecoder().decode(User.self, from: jsonData)
+            
+            return my_info
+        } catch {
+            print("aborted")
+        }
+        
+        
+        // when info.txt doesn't exist
+        let no_info = User(
+            email: "not found",
+            password: "not found"
+        )
+        return no_info
+    }
+    
     
     func register(register_info:Register_info) -> Register_result {
-        print("called")
         // for sync
         let semaphore = DispatchSemaphore(value: 0)
         
@@ -163,6 +189,22 @@ class API {
         }
         
         return registeration_result
+    }
+    
+    
+    func get_friend_location() {
+        // for sync
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let destination = urlString + "/registration"
+        let url = URL(string: destination)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // prepare for user auth
+        
     }
 }
 

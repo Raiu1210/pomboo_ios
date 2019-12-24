@@ -9,6 +9,7 @@
 import Foundation
 
 // struct for login
+// this is also used for getting friends location
 struct User : Codable {
     var email : String
     var password : String
@@ -35,3 +36,7 @@ struct Register_result : Codable {
     var user_id   : Int
     var user_name : String
 }
+
+
+// struct for get_location
+// curl -X POST -H "Content-Type: application/json" -d '{"email":"baio1484@gmail.com", "password":"oppai"}' localhost:3000/get_frined_location
