@@ -11,7 +11,7 @@ import UIKit
 
 
 class API {
-    let urlString = "http://192.168.11.12:3000"
+    let urlString = "http://192.168.128.104:3000"
     let APSD_path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
     
     let encoder = JSONEncoder()
@@ -196,7 +196,7 @@ class API {
         // for sync
         let semaphore = DispatchSemaphore(value: 0)
         
-        let destination = urlString + "/registration"
+        let destination = urlString + "/get_frined_location"
         let url = URL(string: destination)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
@@ -204,7 +204,26 @@ class API {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // prepare for user auth
+        let user = load_my_info()
+        print(user)
         
+        do {
+            // create body
+            let post_obj = try! encoder.encode(user)
+            request.httpBody = post_obj
+
+            // start session
+            let task:URLSessionDataTask = session.dataTask(with: request, completionHandler: {(data,response,error) -> Void in
+                let result = try! self.decoder.decode(Frineds_locations.self, from: data!)
+
+                print(result)
+                semaphore.signal()
+            })
+            task.resume()
+            semaphore.wait()
+        } catch {
+            print("Error:\(error)")
+        }
     }
 }
 
